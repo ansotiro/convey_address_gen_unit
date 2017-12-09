@@ -5,7 +5,7 @@
 // Engineer: 		ansotiropoulos
 //
 // Design Name: 	FPGA-based Stream Microbench
-// Module Name:    	vmemctrl
+// Module Name:    	CNV_AGU
 //
 // Target Devices: 	XC6VLX760
 // Tool versions: 	ISE 12.4
@@ -470,8 +470,7 @@ assign stream_pop[i] = fifo_rd_en[i];
 
 if (i%2==0) begin
 
-    AGU MEM_CTRL
-    (
+    AGU MEM_CTRL (
         .CLK 			(clk),
         .RST 			(reset),
         .START 			(start),
@@ -494,8 +493,7 @@ if (i%2==0) begin
 end
 else begin
 
-    AGU MEM_CTRL
-    (
+    AGU MEM_CTRL (
         .CLK 			(clk),
         .RST 			(reset),
         .START 			(start),
@@ -518,55 +516,5 @@ else begin
 end
 
 end endgenerate
-
-// generate for (i=0; i<16; i=i+2) begin : MC_RD
-//
-// MC_CTRL_PROG MEM_CTRL
-// (
-//     .CLK 			(clk),
-//     .RST 			(reset),
-//     .START 			(start),
-//     .PSIZE 			(psize),
-//     .AEID			(ae_id),
-//     .PEID			(i[3:1]),
-//     .ODDEVEN		(odd_even[i]),
-//     .AEREG			(ae_reg),
-//     .INIT			(init),
-//     .MC_RQ_STALL	(mc_rd_rq_stall[i]),
-//     .FIFO_STALL 	(fifo_full[i]),
-//     .MC_RQ_ADDR 	(req_vadr[i]),
-//     .MC_RQ_EN 		(mc_req_ld[i]),
-//     .FIFO_POP 		(fifo_rd_en[i]),
-//     .FINISH 		(mc_finish[i])
-// );
-//
-// assign mc_req_st[i] = 1'b0;
-//
-// end endgenerate
-
-// generate for (i=1; i<16; i=i+2) begin : MC_WR
-//
-// MC_CTRL_PROG MEM_CTRL
-// (
-//     .CLK 			(clk),
-//     .RST 			(reset),
-//     .START 			(start),
-//     .PSIZE 			(psize),
-//     .AEID			(ae_id),
-//     .PEID			(i[3:1]),
-//     .ODDEVEN		(odd_even[i]),
-//     .AEREG			(ae_reg),
-//     .INIT			(init),
-//     .MC_RQ_STALL	(mc_wr_rq_stall[i]),
-//     .FIFO_STALL 	(fifo_empty[i]),
-//     .MC_RQ_ADDR 	(req_vadr[i]),
-//     .MC_RQ_EN 		(mc_req_st[i]),
-//     .FIFO_POP 		(fifo_rd_en[i]),
-//     .FINISH 		(mc_finish[i])
-// );
-//
-// assign mc_req_ld[i] = 1'b0;
-//
-// end endgenerate
 
 endmodule
