@@ -5,7 +5,7 @@
 // Engineer: 		ansotiropoulos
 //
 // Design Name: 	FPGA-based Stream Microbench
-// Module Name:    	vmemctrl
+// Module Name:    	CNV_AGU
 //
 // Target Devices: 	XC6VLX760
 // Tool versions: 	ISE 12.4
